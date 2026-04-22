@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapa Conceptual - Globalización</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #c0392b;
+    --dark: #1a1a2e;
+    --mid: #16213e;
+    --card: #0f3460;
+    --accent: #e94560;
+    --gold: #f5a623;
+    --green: #27ae60;
+    --blue: #2980b9;
+    --purple: #8e44ad;
+    --teal: #16a085;
+    --white: #f0f0f0;
+    --soft: rgba(255,255,255,0.07);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--dark);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--white);
+    min-height: 100vh;
+    padding: 40px 20px 60px;
+    background-image: radial-gradient(ellipse at 20% 20%, rgba(233,69,96,0.08) 0%, transparent 60%),
+                      radial-gradient(ellipse at 80% 80%, rgba(41,128,185,0.08) 0%, transparent 60%);
+  }
+  .center-title { text-align: center; margin-bottom: 10px; }
+  .center-title .label { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+  .center-title h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 900; color: #fff; line-height: 1.1; }
+  .center-title .definition { max-width: 680px; margin: 14px auto 0; font-size: 0.92rem; color: rgba(255,255,255,0.6); line-height: 1.7; font-weight: 300; }
+  .divider { display: flex; align-items: center; gap: 16px; max-width: 900px; margin: 28px auto; opacity: 0.3; }
+  .divider span { flex: 1; height: 1px; background: #fff; }
+  .dimensions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto; }
+  .dim-card { background: var(--soft); border-radius: 18px; border: 1px solid rgba(255,255,255,0.08); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
+  .dim-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+  .dim-header { padding: 18px 20px 14px; display: flex; align-items: center; gap: 12px; }
+  .dim-icon { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+  .dim-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: #fff; }
+  .dim-card.eco .dim-icon { background: rgba(245,166,35,0.2); border: 1px solid var(--gold); }
+  .dim-card.cul .dim-icon { background: rgba(142,68,173,0.2); border: 1px solid var(--purple); }
+  .dim-card.pol .dim-icon { background: rgba(41,128,185,0.2); border: 1px solid var(--blue); }
+  .dim-card.tec .dim-icon { background: rgba(22,160,133,0.2); border: 1px solid var(--teal); }
+  .dim-card.eco { border-top: 3px solid var(--gold); }
+  .dim-card.cul { border-top: 3px solid var(--purple); }
+  .dim-card.pol { border-top: 3px solid var(--blue); }
+  .dim-card.tec { border-top: 3px solid var(--teal); }
+  .dim-body { padding: 0 20px 20px; }
+  .example-box { background: rgba(255,255,255,0.04); border-radius: 10px; padding: 10px 14px; margin-bottom: 16px; font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+  .example-box strong { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px; opacity: 0.7; }
+  .effects-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .effect-box { border-radius: 10px; padding: 12px; }
+  .effect-box.pos { background: rgba(39,174,96,0.1); border: 1px solid rgba(39,174,96,0.25); }
+  .effect-box.neg { background: rgba(192,57,43,0.1); border: 1px solid rgba(192,57,43,0.25); }
+  .effect-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; margin-bottom: 6px; display: flex; align-items: center; gap: 5px; }
+  .effect-box.pos .effect-label { color: var(--green); }
+  .effect-box.neg .effect-label { color: var(--red); }
+  .effect-item { font-size: 0.8rem; color: rgba(255,255,255,0.65); line-height: 1.55; padding-left: 8px; border-left: 2px solid; margin-bottom: 5px; }
+  .effect-box.pos .effect-item { border-color: rgba(39,174,96,0.4); }
+  .effect-box.neg .effect-item { border-color: rgba(192,57,43,0.4); }
+  .footer { text-align: center; margin-top: 40px; font-size: 0.75rem; color: rgba(255,255,255,0.2); letter-spacing: 2px; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="center-title">
+  <div class="label">Mapa Conceptual</div>
+  <h1>Globalización</h1>
+  <p class="definition">Proceso de integración e interconexión creciente entre países, economías, culturas y sistemas políticos a escala mundial, impulsado por el avance tecnológico, el comercio y la comunicación.</p>
+</div>
+<div class="divider"><span></span><i>4 dimensiones</i><span></span></div>
+<div class="dimensions-grid">
+  <div class="dim-card eco">
+    <div class="dim-header">
+      <div class="dim-icon">💰</div>
+      <div class="dim-title">Dimensión Económica</div>
+    </div>
+    <div class="dim-body">
+      <div class="example-box"><strong>Ejemplos concretos</strong>Libre comercio entre países (TLC), empresas multinacionales como Amazon o Samsung, el Fondo Monetario Internacional (FMI).</div>
+      <div class="effects-row">
+        <div class="effect-box pos">
+          <div class="effect-label">✔ Positivos</div>
+          <div class="effect-item">Mayor acceso a productos y mercados</div>
+          <div class="effect-item">Crecimiento económico y empleo</div>
+          <div class="effect-item">Inversión extranjera directa</div>
+        </div>
+        <div class="effect-box neg">
+          <div class="effect-label">✘ Negativos</div>
+          <div class="effect-item">Desigualdad entre países ricos y pobres</div>
+          <div class="effect-item">Dependencia económica</div>
+          <div class="effect-item">Explotación laboral</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dim-card cul">
+    <div class="dim-header">
+      <div class="dim-icon">🎭</div>
+      <div class="dim-title">Dimensión Cultural</div>
+    </div>
+    <div class="dim-body">
+      <div class="example-box"><strong>Ejemplos concretos</strong>Difusión del inglés como lengua global, Netflix y plataformas digitales, comida rápida (McDonald's) presente en todo el mundo.</div>
+      <div class="effects-row">
+        <div class="effect-box pos">
+          <div class="effect-label">✔ Positivos</div>
+          <div class="effect-item">Intercambio y enriquecimiento cultural</div>
+          <div class="effect-item">Mayor tolerancia y diversidad</div>
+          <div class="effect-item">Acceso a arte y conocimiento global</div>
+        </div>
+        <div class="effect-box neg">
+          <div class="effect-label">✘ Negativos</div>
+          <div class="effect-item">Pérdida de identidad local</div>
+          <div class="effect-item">Homogeneización cultural</div>
+          <div class="effect-item">Desaparición de lenguas nativas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dim-card pol">
+    <div class="dim-header">
+      <div class="dim-icon">🏛️</div>
+      <div class="dim-title">Dimensión Política</div>
+    </div>
+    <div class="dim-body">
+      <div class="example-box"><strong>Ejemplos concretos</strong>ONU, Unión Europea, Tratados internacionales de derechos humanos, acuerdos climáticos como el de París.</div>
+      <div class="effects-row">
+        <div class="effect-box pos">
+          <div class="effect-label">✔ Positivos</div>
+          <div class="effect-item">Cooperación internacional</div>
+          <div class="effect-item">Defensa de los derechos humanos</div>
+          <div class="effect-item">Resolución pacífica de conflictos</div>
+        </div>
+        <div class="effect-box neg">
+          <div class="effect-label">✘ Negativos</div>
+          <div class="effect-item">Pérdida de soberanía nacional</div>
+          <div class="effect-item">Imposición de políticas externas</div>
+          <div class="effect-item">Hegemonía de potencias mundiales</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dim-card tec">
+    <div class="dim-header">
+      <div class="dim-icon">🌐</div>
+      <div class="dim-title">Dimensión Tecnológica</div>
+    </div>
+    <div class="dim-body">
+      <div class="example-box"><strong>Ejemplos concretos</strong>Internet y redes sociales (Instagram, TikTok), smartphones, inteligencia artificial, plataformas de videollamadas como Zoom.</div>
+      <div class="effects-row">
+        <div class="effect-box pos">
+          <div class="effect-label">✔ Positivos</div>
+          <div class="effect-item">Acceso instantáneo a información</div>
+          <div class="effect-item">Comunicación global sin fronteras</div>
+          <div class="effect-item">Innovación y desarrollo científico</div>
+        </div>
+        <div class="effect-box neg">
+          <div class="effect-label">✘ Negativos</div>
+          <div class="effect-item">Brecha digital entre países</div>
+          <div class="effect-item">Desinformación y ciberdelitos</div>
+          <div class="effect-item">Pérdida de privacidad</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer">Universidad Tecnológica del Perú · Actividad Autónoma</div>
+</body>
+</html>
